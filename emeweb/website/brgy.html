@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Emergency Hotline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: rgb(226, 132, 98);
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 25px;
+            background-color: black;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        nav img {
+            width: 90px;
+        }
+
+        .nav-links {
+            flex: 1;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            display: inline-block;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 550;
+            padding: 8px 12px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-links ul li a:hover,
+        .nav-links ul li a:focus {
+            color: #be564f;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #be564f;
+            display: block;
+            margin: auto;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        .filter-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+        }
+
+        .filter-button {
+            background-color: transparent;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 30px;
+            padding: 8px 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .filter-button ion-icon {
+            font-size: 30px;
+            color: #ffffff;
+        }
+
+        .filter-button:hover {
+            color: #be564f;
+        }
+
+        .brgy-section {
+            padding: 30px 10px;
+            background-color: rgb(226, 132, 98);
+            text-align: center;
+            color: #dcc8c8;
+        }
+
+        .document-list {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .document-list ol {
+            column-count: 4;
+            column-gap: 40px;
+            list-style-type: decimal;
+            padding-left: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .document-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            break-inside: avoid;
+        }
+
+        @media (max-width: 768px) {
+            .document-list ol {
+                column-count: 1; /* Single column on smaller screens */
+            }
+        }
+
+        .accordion {
+            background-color: #000000;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px 0;
+            cursor: pointer;
+            padding: 15px;
+            text-align: left;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .accordion:hover {
+            background-color: #e2e2e2;
+        }
+
+        .panel {
+            padding: 0 15px;
+            display: none;
+            overflow: hidden;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 0 0 5px 5px;
+            margin-bottom: 10px;
+        }
+
+        .panel p {
+            color: #000000; /* Change this to your desired color */
+        }
+
+        .footer {
+            background-color: black;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-bottom {
+            background-color: black;
+        }
+
+        .footer-rights {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="web.html"><img src="images/logo.jpg" alt="Lipa City Emergency Hotline Logo"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="web.html">Home</a></li>
+                    <li><a href="brgy.html">Barangay</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="filter-container">
+                <button id="filterMenu" class="filter-button">
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <section class="brgy-section">
+        <div class="document-list">
+            <button class="accordion">Adya</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Anilao</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Anilao Labac</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Antipolo Del Norte</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Antipolo Del Sur</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Bagong Pook</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Balintawak</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Banaybanay</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Bulacnin</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Bulaklakan</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Dagatan</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Inosluban</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Kayumanggi</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Latag</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Lodlod</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Marawoy</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Mataas na Lupa</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Munting Pulo</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Pangao</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Plaridel</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Pusil</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Sampaguita</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Sabang</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">San Carlos</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">San Celestino</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">San Salvador</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Talisay</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Tambo</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Tanguay</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <button class="accordion">Tibig</button>
+            <div class="panel">
+                <p><strong>Medical Assistance: 746 5985</p>
+                <p><strong>Police Assistance: 746 5985</p>
+                <p><strong>Fire Department: 746 5985</p>
+            </div>
+            <!-- Add more accordion items as needed -->
+        </div>                
+    </section>
+    <script>
+        document.querySelectorAll('.accordion').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const panel = button.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        });
+
+        document.getElementById('filterMenu').addEventListener('click', function() {
+            alert('Filter menu clicked!');
+        });
+    </script>
+</body>
+<footer class="footer">
+    <div class="footer-bottom">
+        <div class="footer-rights">
+            <p>&copy; 2024 All rights reserved</p>
+        </div>
+    </div>
+</footer>
+</html>
